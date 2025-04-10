@@ -28,7 +28,7 @@ Partial Class selectRoom
         Me.singleButton = New Guna.UI2.WinForms.Guna2Button()
         Me.doubleButton = New Guna.UI2.WinForms.Guna2Button()
         Me.familyButton = New Guna.UI2.WinForms.Guna2Button()
-        Me.S = New Guna.UI2.WinForms.Guna2Button()
+        Me.teamButton = New Guna.UI2.WinForms.Guna2Button()
         Me.selectedRoomFlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.selectedRoomButton = New Guna.UI2.WinForms.Guna2Button()
@@ -145,29 +145,30 @@ Partial Class selectRoom
         Me.familyButton.TabIndex = 13
         Me.familyButton.Text = "3-6"
         '
-        'S
+        'teamButton
         '
-        Me.S.BackColor = System.Drawing.Color.Transparent
-        Me.S.BorderRadius = 5
-        Me.S.BorderThickness = 1
-        Me.S.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.S.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.S.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.S.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.S.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.S.FillColor = System.Drawing.Color.Transparent
-        Me.S.Font = New System.Drawing.Font("Lato", 17.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.S.ForeColor = System.Drawing.Color.Black
-        Me.S.Location = New System.Drawing.Point(400, 150)
-        Me.S.Name = "S"
-        Me.S.ShadowDecoration.BorderRadius = 5
-        Me.S.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
-        Me.S.Size = New System.Drawing.Size(83, 33)
-        Me.S.TabIndex = 14
-        Me.S.Text = "7-10"
+        Me.teamButton.BackColor = System.Drawing.Color.Transparent
+        Me.teamButton.BorderRadius = 5
+        Me.teamButton.BorderThickness = 1
+        Me.teamButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.teamButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.teamButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.teamButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.teamButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.teamButton.FillColor = System.Drawing.Color.Transparent
+        Me.teamButton.Font = New System.Drawing.Font("Lato", 17.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.teamButton.ForeColor = System.Drawing.Color.Black
+        Me.teamButton.Location = New System.Drawing.Point(400, 150)
+        Me.teamButton.Name = "teamButton"
+        Me.teamButton.ShadowDecoration.BorderRadius = 5
+        Me.teamButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.teamButton.Size = New System.Drawing.Size(83, 33)
+        Me.teamButton.TabIndex = 14
+        Me.teamButton.Text = "7-10"
         '
         'selectedRoomFlowLayoutPanel
         '
+        Me.selectedRoomFlowLayoutPanel.AutoScroll = True
         Me.selectedRoomFlowLayoutPanel.Controls.Add(Me.Panel1)
         Me.selectedRoomFlowLayoutPanel.Location = New System.Drawing.Point(99, 220)
         Me.selectedRoomFlowLayoutPanel.Name = "selectedRoomFlowLayoutPanel"
@@ -176,10 +177,10 @@ Partial Class selectRoom
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.selectedRoomButton)
         Me.Panel1.Controls.Add(Me.selectedRoomPrice)
         Me.Panel1.Controls.Add(Me.selectedRoomName)
         Me.Panel1.Controls.Add(Me.selectedRoomPicture)
+        Me.Panel1.Controls.Add(Me.selectedRoomButton)
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -526,7 +527,7 @@ Partial Class selectRoom
         Me.Controls.Add(Me.descriptionFlowLayoutPanel)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.selectedRoomFlowLayoutPanel)
-        Me.Controls.Add(Me.S)
+        Me.Controls.Add(Me.teamButton)
         Me.Controls.Add(Me.familyButton)
         Me.Controls.Add(Me.doubleButton)
         Me.Controls.Add(Me.singleButton)
@@ -555,7 +556,7 @@ Partial Class selectRoom
     Friend WithEvents singleButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents doubleButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents familyButton As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents S As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents teamButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents selectedRoomFlowLayoutPanel As FlowLayoutPanel
     Friend WithEvents selectedRoomPicture As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Panel1 As Panel
