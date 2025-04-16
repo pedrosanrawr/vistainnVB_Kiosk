@@ -31,13 +31,13 @@ Partial Class selectRoom
         Me.teamButton = New Guna.UI2.WinForms.Guna2Button()
         Me.selectedRoomFlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.selectedRoomButton = New Guna.UI2.WinForms.Guna2Button()
         Me.selectedRoomPrice = New System.Windows.Forms.Label()
         Me.selectedRoomName = New System.Windows.Forms.Label()
         Me.selectedRoomPicture = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.selectedRoomButton = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.cancelButton = New Guna.UI2.WinForms.Guna2Button()
         Me.nextButton = New Guna.UI2.WinForms.Guna2Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.iToottip = New System.Windows.Forms.PictureBox()
@@ -187,25 +187,6 @@ Partial Class selectRoom
         Me.Panel1.Size = New System.Drawing.Size(171, 247)
         Me.Panel1.TabIndex = 0
         '
-        'selectedRoomButton
-        '
-        Me.selectedRoomButton.BackColor = System.Drawing.Color.Transparent
-        Me.selectedRoomButton.BorderRadius = 5
-        Me.selectedRoomButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.selectedRoomButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.selectedRoomButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.selectedRoomButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.selectedRoomButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.selectedRoomButton.FillColor = System.Drawing.Color.Transparent
-        Me.selectedRoomButton.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.selectedRoomButton.ForeColor = System.Drawing.Color.White
-        Me.selectedRoomButton.HoverState.BorderColor = System.Drawing.Color.Transparent
-        Me.selectedRoomButton.Location = New System.Drawing.Point(0, 0)
-        Me.selectedRoomButton.Name = "selectedRoomButton"
-        Me.selectedRoomButton.Size = New System.Drawing.Size(171, 247)
-        Me.selectedRoomButton.TabIndex = 18
-        Me.selectedRoomButton.UseTransparentBackground = True
-        '
         'selectedRoomPrice
         '
         Me.selectedRoomPrice.Font = New System.Drawing.Font("Lato", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -218,6 +199,7 @@ Partial Class selectRoom
         '
         'selectedRoomName
         '
+        Me.selectedRoomName.AutoEllipsis = True
         Me.selectedRoomName.Font = New System.Drawing.Font("Lato", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.selectedRoomName.Location = New System.Drawing.Point(0, 186)
         Me.selectedRoomName.Name = "selectedRoomName"
@@ -240,11 +222,30 @@ Partial Class selectRoom
         Me.selectedRoomPicture.TabIndex = 0
         Me.selectedRoomPicture.TabStop = False
         '
+        'selectedRoomButton
+        '
+        Me.selectedRoomButton.BackColor = System.Drawing.Color.Transparent
+        Me.selectedRoomButton.BorderRadius = 5
+        Me.selectedRoomButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.selectedRoomButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.selectedRoomButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.selectedRoomButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.selectedRoomButton.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.selectedRoomButton.FillColor = System.Drawing.Color.Transparent
+        Me.selectedRoomButton.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.selectedRoomButton.ForeColor = System.Drawing.Color.White
+        Me.selectedRoomButton.HoverState.BorderColor = System.Drawing.Color.Transparent
+        Me.selectedRoomButton.Location = New System.Drawing.Point(0, 0)
+        Me.selectedRoomButton.Name = "selectedRoomButton"
+        Me.selectedRoomButton.Size = New System.Drawing.Size(171, 247)
+        Me.selectedRoomButton.TabIndex = 18
+        Me.selectedRoomButton.UseTransparentBackground = True
+        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(206, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.Panel2.Controls.Add(Me.Label9)
-        Me.Panel2.Controls.Add(Me.Guna2Button1)
+        Me.Panel2.Controls.Add(Me.cancelButton)
         Me.Panel2.Controls.Add(Me.nextButton)
         Me.Panel2.Controls.Add(Me.Label10)
         Me.Panel2.Controls.Add(Me.iToottip)
@@ -268,27 +269,27 @@ Partial Class selectRoom
         Me.Label9.TabIndex = 60
         Me.Label9.Text = "ROOM NO."
         '
-        'Guna2Button1
+        'cancelButton
         '
-        Me.Guna2Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.BorderRadius = 5
-        Me.Guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button1.Location = New System.Drawing.Point(249, 705)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.PressedColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.ShadowDecoration.BorderRadius = 5
-        Me.Guna2Button1.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
-        Me.Guna2Button1.Size = New System.Drawing.Size(130, 50)
-        Me.Guna2Button1.TabIndex = 12
-        Me.Guna2Button1.Text = "CANCEL"
+        Me.cancelButton.BackColor = System.Drawing.Color.Transparent
+        Me.cancelButton.BorderColor = System.Drawing.Color.Transparent
+        Me.cancelButton.BorderRadius = 5
+        Me.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cancelButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.cancelButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.cancelButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.cancelButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.cancelButton.FillColor = System.Drawing.Color.Transparent
+        Me.cancelButton.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
+        Me.cancelButton.ForeColor = System.Drawing.Color.Black
+        Me.cancelButton.Location = New System.Drawing.Point(249, 705)
+        Me.cancelButton.Name = "cancelButton"
+        Me.cancelButton.PressedColor = System.Drawing.Color.Transparent
+        Me.cancelButton.ShadowDecoration.BorderRadius = 5
+        Me.cancelButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.cancelButton.Size = New System.Drawing.Size(130, 50)
+        Me.cancelButton.TabIndex = 12
+        Me.cancelButton.Text = "CANCEL"
         '
         'nextButton
         '
@@ -344,11 +345,13 @@ Partial Class selectRoom
         Me.paymentMethodComboBox.ForeColor = System.Drawing.Color.Black
         Me.paymentMethodComboBox.IntegralHeight = False
         Me.paymentMethodComboBox.ItemHeight = 44
+        Me.paymentMethodComboBox.Items.AddRange(New Object() {"Full Payment - Cash", "Down Payment (50%) - Cash"})
         Me.paymentMethodComboBox.Location = New System.Drawing.Point(40, 705)
         Me.paymentMethodComboBox.Name = "paymentMethodComboBox"
         Me.paymentMethodComboBox.ShadowDecoration.Enabled = True
         Me.paymentMethodComboBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.paymentMethodComboBox.Size = New System.Drawing.Size(190, 50)
+        Me.paymentMethodComboBox.StartIndex = 0
         Me.paymentMethodComboBox.TabIndex = 59
         '
         'roomNoComboBox
@@ -374,19 +377,20 @@ Partial Class selectRoom
         'roomPriceLabel
         '
         Me.roomPriceLabel.Font = New System.Drawing.Font("Lato", 32.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.roomPriceLabel.Location = New System.Drawing.Point(354, 241)
+        Me.roomPriceLabel.Location = New System.Drawing.Point(324, 241)
         Me.roomPriceLabel.Name = "roomPriceLabel"
-        Me.roomPriceLabel.Size = New System.Drawing.Size(177, 46)
+        Me.roomPriceLabel.Size = New System.Drawing.Size(207, 46)
         Me.roomPriceLabel.TabIndex = 18
         Me.roomPriceLabel.Text = "$5000.00"
         Me.roomPriceLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'roomNameLabel
         '
+        Me.roomNameLabel.AutoEllipsis = True
         Me.roomNameLabel.Font = New System.Drawing.Font("Raleway", 47.99999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.roomNameLabel.Location = New System.Drawing.Point(29, 220)
+        Me.roomNameLabel.Location = New System.Drawing.Point(24, 220)
         Me.roomNameLabel.Name = "roomNameLabel"
-        Me.roomNameLabel.Size = New System.Drawing.Size(341, 77)
+        Me.roomNameLabel.Size = New System.Drawing.Size(294, 77)
         Me.roomNameLabel.TabIndex = 17
         Me.roomNameLabel.Text = "STANDARD"
         '
@@ -585,5 +589,5 @@ Partial Class selectRoom
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents nextButton As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents cancelButton As Guna.UI2.WinForms.Guna2Button
 End Class

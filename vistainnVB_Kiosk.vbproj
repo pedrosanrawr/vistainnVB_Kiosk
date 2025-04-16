@@ -199,6 +199,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\incrementQtyButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decrementQtyButton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -6,7 +6,7 @@ Public Class selectRoom
     Private radioButtons As New List(Of Guna.UI2.WinForms.Guna2Button)
     Private selectedCategory As String = ""
     Private selectedRoomName_ As String
-
+    Dim database As New database()
 
     Private Sub selectRoom_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         toolTip.SetToolTip(iToottip, "Hourly Rate: ₱300.00")
@@ -21,7 +21,7 @@ Public Class selectRoom
         LoadRooms()
     End Sub
 
-    Private Sub SelectPicture(selected As Guna.UI2.WinForms.Guna2Panel)
+    Private Sub SelectRoom(selected As Guna.UI2.WinForms.Guna2Panel)
         If selectedPanel IsNot Nothing Then
             selectedPanel.FillColor = Color.Transparent
             selectedPanel.BorderRadius = 5
@@ -40,21 +40,48 @@ Public Class selectRoom
             End If
         Next
 
-        For Each control As Control In selected.Controls
-            If TypeOf control Is Guna.UI2.WinForms.Guna2PictureBox Then
-                Dim selectedRoomPicture As Guna.UI2.WinForms.Guna2PictureBox = CType(control, Guna.UI2.WinForms.Guna2PictureBox)
-                roomPhotoPictureBox.Image = selectedRoomPicture.Image
-                roomPhotoPictureBox.SizeMode = ImageLayout.Tile
-                Exit For
-            End If
-        Next
+        LoadAvailableRoomNumbers()
+
+        Using con As New SqlConnection(database.connectionString)
+            Dim query As String = "SELECT rName, rBedroom, rBathroom, rKitchen, rTechnology, rGeneral, rPrice, rImage FROM rooms WHERE rName = @roomName"
+            Dim cmd As New SqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@roomName", selectedRoomName_)
+
+            Try
+                con.Open()
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+                If reader.Read() Then
+                    bedroomLabel.Text = "Bedroom: " & reader("rBedroom").ToString()
+                    bathroomLabel.Text = "Bathroom: " & reader("rBathroom").ToString()
+                    kitchenLabel.Text = "Kitchen: " & reader("rKitchen").ToString()
+                    technologyLabel.Text = "Technology: " & reader("rTechnology").ToString()
+                    generalLabel.Text = "General: " & reader("rGeneral").ToString()
+                    roomNameLabel.Text = reader("rName").ToString().ToUpper()
+                    roomPriceLabel.Text = "₱" & Convert.ToDouble(reader("rPrice")).ToString("N2")
+
+                    For Each control As Control In selected.Controls
+                        If TypeOf control Is Guna.UI2.WinForms.Guna2PictureBox Then
+                            Dim selectedRoomPicture As Guna.UI2.WinForms.Guna2PictureBox = CType(control, Guna.UI2.WinForms.Guna2PictureBox)
+                            roomPhotoPictureBox.Image = selectedRoomPicture.Image
+                            roomPhotoPictureBox.SizeMode = ImageLayout.Tile
+                            Exit For
+                        End If
+                    Next
+                End If
+
+                reader.Close()
+
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+            End Try
+        End Using
     End Sub
 
     Public Sub LoadRooms()
         selectedRoomFlowLayoutPanel.Controls.Clear()
 
-        Dim db As New database()
-        Dim con As New SqlConnection(db.connectionString)
+        Dim con As New SqlConnection(database.connectionString)
 
         Dim query As String = "SELECT rName, rCategory, MAX(rPrice) as rPrice, MAX(rImage) as rImage FROM rooms "
 
@@ -98,7 +125,7 @@ Public Class selectRoom
                 selectedRoomPicture.Location = New Point(0, 0)
 
                 AddHandler selectedRoomPicture.Click, Sub(sender As Object, e As EventArgs)
-                                                          SelectPicture(roomPanel)
+                                                          SelectRoom(roomPanel)
                                                       End Sub
 
                 If Not IsDBNull(reader("rImage")) Then
@@ -140,7 +167,7 @@ Public Class selectRoom
                     If TypeOf ctrl Is Label Then
                         Dim lbl As Label = CType(ctrl, Label)
                         If lbl.Text = selectedRoomName_ Then
-                            SelectPicture(panel)
+                            SelectRoom(panel)
                             foundMatch = True
                             Exit For
                         End If
@@ -154,6 +181,7 @@ Public Class selectRoom
         Finally
             con.Close()
         End Try
+
     End Sub
 
     Private Sub SelectButton(selected As Guna.UI2.WinForms.Guna2Button)
@@ -168,8 +196,7 @@ Public Class selectRoom
     End Sub
 
     Private Function GetFirstRoomName(category As String) As String
-        Dim db As New database()
-        Using con As New SqlConnection(db.connectionString)
+        Using con As New SqlConnection(database.connectionString)
             Dim query As String = "SELECT TOP 1 rName FROM rooms WHERE rCategory = @category ORDER BY rName"
             Dim cmd As New SqlCommand(query, con)
             cmd.Parameters.AddWithValue("@category", category)
@@ -187,6 +214,30 @@ Public Class selectRoom
         Return ""
     End Function
 
+    Private Sub LoadAvailableRoomNumbers()
+        roomNoComboBox.Items.Clear()
+
+        Using con As New SqlConnection(database.connectionString)
+            Dim query As String = "SELECT rRoomNo FROM rooms WHERE rName = @roomName AND rStatus = 'Available'"
+            Dim cmd As New SqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@roomName", selectedRoomName_)
+
+            Try
+                con.Open()
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+                While reader.Read()
+                    roomNoComboBox.Items.Add(reader("rRoomNo").ToString())
+                End While
+
+                If roomNoComboBox.Items.Count > 0 Then
+                    roomNoComboBox.SelectedIndex = 0
+                End If
+
+            Catch ex As Exception
+                MessageBox.Show("Error loading available room numbers: " & ex.Message)
+            End Try
+        End Using
+    End Sub
 
     Private Sub singleButton_Click(sender As Object, e As EventArgs) Handles singleButton.Click
         SelectButton(sender)
@@ -196,7 +247,7 @@ Public Class selectRoom
 
     Private Sub doubleButton_Click(sender As Object, e As EventArgs) Handles doubleButton.Click
         SelectButton(sender)
-        selectedCategory = "Double"
+        selectedCategory = "Duo"
         LoadRooms()
     End Sub
 
@@ -213,10 +264,38 @@ Public Class selectRoom
     End Sub
 
     Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
+        If roomNoComboBox.SelectedItem Is Nothing Then
+            MessageBox.Show("Please select a room number first." & vbCrLf &
+                        "If you can't select a room number, it means all rooms of this type are currently occupied or under maintenance." & vbCrLf &
+                        "Please choose a different room category.", "Room Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        SelectedRooms.RoomName = selectedRoomName_
+        SelectedRooms.RoomNumber = roomNoComboBox.SelectedItem.ToString()
+        SelectedRooms.PaymentOption = paymentMethodComboBox.Text
+        SelectedRooms.RoomPrice = roomPriceLabel.Text
+        SelectedRooms.RoomCategory = selectedCategory
+
         basePage.loadForm(extras)
     End Sub
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        basePage.loadForm(New startPage())
+    Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to cancel the booking process?",
+                                                     "Confirm Cancel",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            basePage.loadForm(New startPage())
+        End If
     End Sub
+End Class
+
+Public Class SelectedRooms
+    Public Shared Property RoomName As String
+    Public Shared Property RoomPrice As Decimal
+    Public Shared Property RoomNumber As String
+    Public Shared Property PaymentOption As String
+    Public Shared Property RoomCategory As String
 End Class

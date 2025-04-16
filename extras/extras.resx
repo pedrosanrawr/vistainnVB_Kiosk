@@ -121,7 +121,7 @@
   <data name="incrementQtyButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAJNJREFUSEvtlcsJgDAQBaOoBfnpQxFsR6zFMhX1bZKF4MVTnpcdGLI5DX5InGEY
+        DwAACw8BkvkDpQAAAJNJREFUSEvtlcsJgDAQBaOoBfnpQxFsR6zFMhX1bZKF4MVTnpcdGLI5DX5InGEY
         f1G8VholbMLoqrjS2OESRm58gzfs/Y4YX6GE6XENn3GlxTV8QY23UMgaT191Gh9hVtKweMR1gllJwxql
         fGcNa7SDAu3noj2pogfI4HekqCBH5hxGXlRupTqMvKhAvw4Nw/jAuQcr/Cc1CXWkLwAAAABJRU5ErkJg
         gg==
@@ -130,7 +130,7 @@
   <data name="decrementQtyButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAJBJREFUSEvtlUEOQEAMRUeCC+EcIhLXEWdxTIJf+jeTWLYs+pKXDpuXCUYKguCP
+        DgAACw4BQL7hQQAAAJBJREFUSEvtlUEOQEAMRUeCC+EcIhLXEWdxTIJf+jeTWLYs+pKXDpuXCUYKguCP
         FDpdKHVW0C3M6AjXZ2kPox084XJfGcNoCyUqznLDEkYbKMFdp2k436lED12b73iAEtogoy7hHjLMqHn4
         7fmah4VPXi7yyedE8rjLAUIYn6DbkUkYr6Hr30lg0D0cBAFI6QJ7jic098zNeQAAAABJRU5ErkJggg==
 </value>

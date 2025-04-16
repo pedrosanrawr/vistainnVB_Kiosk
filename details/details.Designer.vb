@@ -37,8 +37,6 @@ Partial Class details
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.inCalendar = New System.Windows.Forms.MonthCalendar()
-        Me.outCalendar = New System.Windows.Forms.MonthCalendar()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.inTimeComboBox = New Guna.UI2.WinForms.Guna2ComboBox()
@@ -46,7 +44,8 @@ Partial Class details
         Me.nextButton = New Guna.UI2.WinForms.Guna2Button()
         Me.cancelButton = New Guna.UI2.WinForms.Guna2Button()
         Me.backButton = New Guna.UI2.WinForms.Guna2Button()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.outDatePickerButton = New Guna.UI2.WinForms.Guna2Button()
+        Me.inDatePickerButton = New Guna.UI2.WinForms.Guna2Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -72,7 +71,7 @@ Partial Class details
         Me.firstNameTextBox.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.firstNameTextBox.Font = New System.Drawing.Font("Lato", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.firstNameTextBox.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.firstNameTextBox.Location = New System.Drawing.Point(81, 200)
+        Me.firstNameTextBox.Location = New System.Drawing.Point(283, 200)
         Me.firstNameTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.firstNameTextBox.Name = "firstNameTextBox"
         Me.firstNameTextBox.PlaceholderText = ""
@@ -85,7 +84,7 @@ Partial Class details
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(77, 177)
+        Me.Label3.Location = New System.Drawing.Point(279, 177)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(167, 26)
         Me.Label3.TabIndex = 29
@@ -104,7 +103,7 @@ Partial Class details
         Me.lastNameTextBox.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.lastNameTextBox.Font = New System.Drawing.Font("Lato", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.lastNameTextBox.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.lastNameTextBox.Location = New System.Drawing.Point(81, 300)
+        Me.lastNameTextBox.Location = New System.Drawing.Point(283, 300)
         Me.lastNameTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.lastNameTextBox.Name = "lastNameTextBox"
         Me.lastNameTextBox.PlaceholderText = ""
@@ -117,7 +116,7 @@ Partial Class details
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(77, 277)
+        Me.Label2.Location = New System.Drawing.Point(279, 277)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(167, 26)
         Me.Label2.TabIndex = 31
@@ -136,7 +135,7 @@ Partial Class details
         Me.emailTextBox.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.emailTextBox.Font = New System.Drawing.Font("Lato", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.emailTextBox.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.emailTextBox.Location = New System.Drawing.Point(81, 400)
+        Me.emailTextBox.Location = New System.Drawing.Point(283, 400)
         Me.emailTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.emailTextBox.Name = "emailTextBox"
         Me.emailTextBox.PlaceholderText = ""
@@ -149,7 +148,7 @@ Partial Class details
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(77, 377)
+        Me.Label4.Location = New System.Drawing.Point(279, 377)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(167, 26)
         Me.Label4.TabIndex = 33
@@ -168,7 +167,7 @@ Partial Class details
         Me.phoneNoTextBox.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.phoneNoTextBox.Font = New System.Drawing.Font("Lato", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.phoneNoTextBox.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.phoneNoTextBox.Location = New System.Drawing.Point(81, 500)
+        Me.phoneNoTextBox.Location = New System.Drawing.Point(283, 500)
         Me.phoneNoTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.phoneNoTextBox.Name = "phoneNoTextBox"
         Me.phoneNoTextBox.PlaceholderText = ""
@@ -181,7 +180,7 @@ Partial Class details
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(77, 477)
+        Me.Label5.Location = New System.Drawing.Point(279, 477)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(167, 26)
         Me.Label5.TabIndex = 35
@@ -190,7 +189,7 @@ Partial Class details
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(77, 577)
+        Me.Label6.Location = New System.Drawing.Point(279, 577)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(167, 26)
         Me.Label6.TabIndex = 37
@@ -209,7 +208,8 @@ Partial Class details
         Me.paxComboBox.ForeColor = System.Drawing.Color.Black
         Me.paxComboBox.IntegralHeight = False
         Me.paxComboBox.ItemHeight = 44
-        Me.paxComboBox.Location = New System.Drawing.Point(81, 600)
+        Me.paxComboBox.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
+        Me.paxComboBox.Location = New System.Drawing.Point(283, 600)
         Me.paxComboBox.Name = "paxComboBox"
         Me.paxComboBox.ShadowDecoration.Enabled = True
         Me.paxComboBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
@@ -219,7 +219,7 @@ Partial Class details
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(431, 177)
+        Me.Label7.Location = New System.Drawing.Point(633, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(167, 26)
         Me.Label7.TabIndex = 59
@@ -228,7 +228,7 @@ Partial Class details
         'Label8
         '
         Me.Label8.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(780, 177)
+        Me.Label8.Location = New System.Drawing.Point(633, 433)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(167, 26)
         Me.Label8.TabIndex = 60
@@ -237,7 +237,7 @@ Partial Class details
         'Label9
         '
         Me.Label9.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(431, 220)
+        Me.Label9.Location = New System.Drawing.Point(633, 220)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(167, 26)
         Me.Label9.TabIndex = 61
@@ -246,34 +246,16 @@ Partial Class details
         'Label10
         '
         Me.Label10.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(780, 220)
+        Me.Label10.Location = New System.Drawing.Point(633, 476)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(167, 26)
         Me.Label10.TabIndex = 62
         Me.Label10.Text = "DATE"
         '
-        'inCalendar
-        '
-        Me.inCalendar.Font = New System.Drawing.Font("Raleway", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.inCalendar.Location = New System.Drawing.Point(435, 255)
-        Me.inCalendar.Name = "inCalendar"
-        Me.inCalendar.TabIndex = 63
-        Me.inCalendar.TitleBackColor = System.Drawing.Color.Gray
-        Me.inCalendar.MinDate = DateTime.Today
-        '
-        'outCalendar
-        '
-        Me.outCalendar.Font = New System.Drawing.Font("Raleway", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.outCalendar.Location = New System.Drawing.Point(784, 255)
-        Me.outCalendar.Name = "outCalendar"
-        Me.outCalendar.TabIndex = 64
-        Me.outCalendar.TitleBackColor = System.Drawing.Color.Gray
-        Me.outCalendar.MinDate = DateTime.Today.AddDays(1)
-        '
         'Label11
         '
         Me.Label11.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(431, 477)
+        Me.Label11.Location = New System.Drawing.Point(633, 313)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(167, 26)
         Me.Label11.TabIndex = 65
@@ -282,7 +264,7 @@ Partial Class details
         'Label12
         '
         Me.Label12.Font = New System.Drawing.Font("Raleway", 16.48!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(780, 477)
+        Me.Label12.Location = New System.Drawing.Point(633, 577)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(167, 26)
         Me.Label12.TabIndex = 66
@@ -301,7 +283,8 @@ Partial Class details
         Me.inTimeComboBox.ForeColor = System.Drawing.Color.Black
         Me.inTimeComboBox.IntegralHeight = False
         Me.inTimeComboBox.ItemHeight = 44
-        Me.inTimeComboBox.Location = New System.Drawing.Point(435, 500)
+        Me.inTimeComboBox.Items.AddRange(New Object() {"12:00 AM  ", "01:00 AM  ", "02:00 AM  ", "03:00 AM  ", "04:00 AM  ", "05:00 AM  ", "06:00 AM  ", "07:00 AM  ", "08:00 AM  ", "09:00 AM  ", "10:00 AM  ", "11:00 AM  ", "12:00 PM  ", "01:00 PM  ", "02:00 PM  ", "03:00 PM  ", "04:00 PM  ", "05:00 PM  ", "06:00 PM  ", "07:00 PM  ", "08:00 PM  ", "09:00 PM  ", "10:00 PM  ", "11:00 PM"})
+        Me.inTimeComboBox.Location = New System.Drawing.Point(637, 336)
         Me.inTimeComboBox.Name = "inTimeComboBox"
         Me.inTimeComboBox.ShadowDecoration.Enabled = True
         Me.inTimeComboBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
@@ -321,7 +304,8 @@ Partial Class details
         Me.outTimeComboBox.ForeColor = System.Drawing.Color.Black
         Me.outTimeComboBox.IntegralHeight = False
         Me.outTimeComboBox.ItemHeight = 44
-        Me.outTimeComboBox.Location = New System.Drawing.Point(784, 500)
+        Me.outTimeComboBox.Items.AddRange(New Object() {"12:00 AM  ", "01:00 AM  ", "02:00 AM  ", "03:00 AM  ", "04:00 AM  ", "05:00 AM  ", "06:00 AM  ", "07:00 AM  ", "08:00 AM  ", "09:00 AM  ", "10:00 AM  ", "11:00 AM  ", "12:00 PM  ", "01:00 PM  ", "02:00 PM  ", "03:00 PM  ", "04:00 PM  ", "05:00 PM  ", "06:00 PM  ", "07:00 PM  ", "08:00 PM  ", "09:00 PM  ", "10:00 PM  ", "11:00 PM"})
+        Me.outTimeComboBox.Location = New System.Drawing.Point(637, 600)
         Me.outTimeComboBox.Name = "outTimeComboBox"
         Me.outTimeComboBox.ShadowDecoration.Enabled = True
         Me.outTimeComboBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
@@ -393,16 +377,53 @@ Partial Class details
         Me.backButton.TabIndex = 71
         Me.backButton.Text = "BACK"
         '
-        'Label13
+        'outDatePickerButton
         '
-        Me.Label13.Font = New System.Drawing.Font("Lato", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(431, 600)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(580, 50)
-        Me.Label13.TabIndex = 72
-        Me.Label13.Text = "If the payment is not completed within 24 hours of booking, your booking will be " &
-    "automatically cancelled."
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.outDatePickerButton.BackColor = System.Drawing.Color.Transparent
+        Me.outDatePickerButton.BorderRadius = 5
+        Me.outDatePickerButton.CheckedState.BorderColor = System.Drawing.Color.Black
+        Me.outDatePickerButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.outDatePickerButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.outDatePickerButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.outDatePickerButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.outDatePickerButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.outDatePickerButton.FillColor = System.Drawing.Color.White
+        Me.outDatePickerButton.FocusedColor = System.Drawing.Color.Black
+        Me.outDatePickerButton.Font = New System.Drawing.Font("Lato", 13.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.outDatePickerButton.ForeColor = System.Drawing.Color.Black
+        Me.outDatePickerButton.HoverState.BorderColor = System.Drawing.Color.Transparent
+        Me.outDatePickerButton.HoverState.CustomBorderColor = System.Drawing.Color.Black
+        Me.outDatePickerButton.Location = New System.Drawing.Point(637, 500)
+        Me.outDatePickerButton.Name = "outDatePickerButton"
+        Me.outDatePickerButton.ShadowDecoration.Enabled = True
+        Me.outDatePickerButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.outDatePickerButton.Size = New System.Drawing.Size(227, 50)
+        Me.outDatePickerButton.TabIndex = 84
+        Me.outDatePickerButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'inDatePickerButton
+        '
+        Me.inDatePickerButton.BackColor = System.Drawing.Color.Transparent
+        Me.inDatePickerButton.BorderRadius = 5
+        Me.inDatePickerButton.CheckedState.BorderColor = System.Drawing.Color.Black
+        Me.inDatePickerButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.inDatePickerButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.inDatePickerButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.inDatePickerButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.inDatePickerButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.inDatePickerButton.FillColor = System.Drawing.Color.White
+        Me.inDatePickerButton.FocusedColor = System.Drawing.Color.Black
+        Me.inDatePickerButton.Font = New System.Drawing.Font("Lato", 13.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.inDatePickerButton.ForeColor = System.Drawing.Color.Black
+        Me.inDatePickerButton.HoverState.BorderColor = System.Drawing.Color.Transparent
+        Me.inDatePickerButton.HoverState.CustomBorderColor = System.Drawing.Color.Black
+        Me.inDatePickerButton.Location = New System.Drawing.Point(637, 244)
+        Me.inDatePickerButton.Name = "inDatePickerButton"
+        Me.inDatePickerButton.ShadowDecoration.Enabled = True
+        Me.inDatePickerButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.inDatePickerButton.Size = New System.Drawing.Size(227, 50)
+        Me.inDatePickerButton.TabIndex = 85
+        Me.inDatePickerButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'details
         '
@@ -410,7 +431,8 @@ Partial Class details
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1142, 790)
-        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.inDatePickerButton)
+        Me.Controls.Add(Me.outDatePickerButton)
         Me.Controls.Add(Me.backButton)
         Me.Controls.Add(Me.cancelButton)
         Me.Controls.Add(Me.nextButton)
@@ -418,10 +440,7 @@ Partial Class details
         Me.Controls.Add(Me.inTimeComboBox)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.outCalendar)
-        Me.Controls.Add(Me.inCalendar)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.paxComboBox)
@@ -435,6 +454,7 @@ Partial Class details
         Me.Controls.Add(Me.firstNameTextBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label9)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "details"
         Me.Text = " "
@@ -457,8 +477,6 @@ Partial Class details
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
-    Friend WithEvents inCalendar As MonthCalendar
-    Friend WithEvents outCalendar As MonthCalendar
     Friend WithEvents Label11 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents inTimeComboBox As Guna.UI2.WinForms.Guna2ComboBox
@@ -466,5 +484,6 @@ Partial Class details
     Friend WithEvents nextButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents cancelButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents backButton As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Label13 As Label
+    Friend WithEvents outDatePickerButton As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents inDatePickerButton As Guna.UI2.WinForms.Guna2Button
 End Class

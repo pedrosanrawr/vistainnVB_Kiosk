@@ -24,8 +24,8 @@ Partial Class extras
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(extras))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.itemFlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
+        Me.itemPanel = New System.Windows.Forms.Panel()
         Me.QtyLabel = New System.Windows.Forms.Label()
         Me.incrementQtyButton = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.decrementQtyButton = New Guna.UI2.WinForms.Guna2PictureBox()
@@ -37,10 +37,10 @@ Partial Class extras
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.nextButton = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
-        Me.FlowLayoutPanel1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.cancelButton = New Guna.UI2.WinForms.Guna2Button()
+        Me.backButton = New Guna.UI2.WinForms.Guna2Button()
+        Me.itemFlowLayoutPanel.SuspendLayout()
+        Me.itemPanel.SuspendLayout()
         CType(Me.incrementQtyButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.decrementQtyButton, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,26 +55,27 @@ Partial Class extras
         Me.Label1.Text = "EXTRAS"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'FlowLayoutPanel1
+        'itemFlowLayoutPanel
         '
-        Me.FlowLayoutPanel1.Controls.Add(Me.Panel1)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(120, 220)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(930, 430)
-        Me.FlowLayoutPanel1.TabIndex = 2
+        Me.itemFlowLayoutPanel.AutoScroll = True
+        Me.itemFlowLayoutPanel.Controls.Add(Me.itemPanel)
+        Me.itemFlowLayoutPanel.Location = New System.Drawing.Point(120, 220)
+        Me.itemFlowLayoutPanel.Name = "itemFlowLayoutPanel"
+        Me.itemFlowLayoutPanel.Size = New System.Drawing.Size(930, 430)
+        Me.itemFlowLayoutPanel.TabIndex = 2
         '
-        'Panel1
+        'itemPanel
         '
-        Me.Panel1.Controls.Add(Me.QtyLabel)
-        Me.Panel1.Controls.Add(Me.incrementQtyButton)
-        Me.Panel1.Controls.Add(Me.decrementQtyButton)
-        Me.Panel1.Controls.Add(Me.extrasPrice)
-        Me.Panel1.Controls.Add(Me.extrasName)
-        Me.Panel1.Controls.Add(Me.selectCheckBox)
-        Me.Panel1.Location = New System.Drawing.Point(3, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(927, 70)
-        Me.Panel1.TabIndex = 0
+        Me.itemPanel.Controls.Add(Me.QtyLabel)
+        Me.itemPanel.Controls.Add(Me.incrementQtyButton)
+        Me.itemPanel.Controls.Add(Me.decrementQtyButton)
+        Me.itemPanel.Controls.Add(Me.extrasPrice)
+        Me.itemPanel.Controls.Add(Me.extrasName)
+        Me.itemPanel.Controls.Add(Me.selectCheckBox)
+        Me.itemPanel.Location = New System.Drawing.Point(3, 3)
+        Me.itemPanel.Name = "itemPanel"
+        Me.itemPanel.Size = New System.Drawing.Size(924, 70)
+        Me.itemPanel.TabIndex = 0
         '
         'QtyLabel
         '
@@ -206,49 +207,49 @@ Partial Class extras
         Me.nextButton.TabIndex = 66
         Me.nextButton.Text = "NEXT"
         '
-        'Guna2Button1
+        'cancelButton
         '
-        Me.Guna2Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.BorderRadius = 5
-        Me.Guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button1.Location = New System.Drawing.Point(820, 705)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.PressedColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.ShadowDecoration.BorderRadius = 5
-        Me.Guna2Button1.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
-        Me.Guna2Button1.Size = New System.Drawing.Size(130, 50)
-        Me.Guna2Button1.TabIndex = 67
-        Me.Guna2Button1.Text = "CANCEL"
+        Me.cancelButton.BackColor = System.Drawing.Color.Transparent
+        Me.cancelButton.BorderColor = System.Drawing.Color.Transparent
+        Me.cancelButton.BorderRadius = 5
+        Me.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cancelButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.cancelButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.cancelButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.cancelButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.cancelButton.FillColor = System.Drawing.Color.Transparent
+        Me.cancelButton.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.cancelButton.ForeColor = System.Drawing.Color.Black
+        Me.cancelButton.Location = New System.Drawing.Point(820, 705)
+        Me.cancelButton.Name = "cancelButton"
+        Me.cancelButton.PressedColor = System.Drawing.Color.Transparent
+        Me.cancelButton.ShadowDecoration.BorderRadius = 5
+        Me.cancelButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.cancelButton.Size = New System.Drawing.Size(130, 50)
+        Me.cancelButton.TabIndex = 67
+        Me.cancelButton.Text = "CANCEL"
         '
-        'Guna2Button2
+        'backButton
         '
-        Me.Guna2Button2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button2.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Button2.BorderRadius = 5
-        Me.Guna2Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button2.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button2.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Guna2Button2.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button2.Location = New System.Drawing.Point(42, 705)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.PressedColor = System.Drawing.Color.Transparent
-        Me.Guna2Button2.ShadowDecoration.BorderRadius = 5
-        Me.Guna2Button2.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
-        Me.Guna2Button2.Size = New System.Drawing.Size(130, 50)
-        Me.Guna2Button2.TabIndex = 68
-        Me.Guna2Button2.Text = "BACK"
+        Me.backButton.BackColor = System.Drawing.Color.Transparent
+        Me.backButton.BorderColor = System.Drawing.Color.Transparent
+        Me.backButton.BorderRadius = 5
+        Me.backButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.backButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.backButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.backButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.backButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.backButton.FillColor = System.Drawing.Color.Transparent
+        Me.backButton.Font = New System.Drawing.Font("Raleway", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.backButton.ForeColor = System.Drawing.Color.Black
+        Me.backButton.Location = New System.Drawing.Point(42, 705)
+        Me.backButton.Name = "backButton"
+        Me.backButton.PressedColor = System.Drawing.Color.Transparent
+        Me.backButton.ShadowDecoration.BorderRadius = 5
+        Me.backButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.backButton.Size = New System.Drawing.Size(130, 50)
+        Me.backButton.TabIndex = 68
+        Me.backButton.Text = "BACK"
         '
         'extras
         '
@@ -256,20 +257,20 @@ Partial Class extras
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1142, 790)
-        Me.Controls.Add(Me.Guna2Button2)
-        Me.Controls.Add(Me.Guna2Button1)
+        Me.Controls.Add(Me.backButton)
+        Me.Controls.Add(Me.cancelButton)
         Me.Controls.Add(Me.nextButton)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.itemFlowLayoutPanel)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "extras"
         Me.Text = "extras"
-        Me.FlowLayoutPanel1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
+        Me.itemFlowLayoutPanel.ResumeLayout(False)
+        Me.itemPanel.ResumeLayout(False)
         CType(Me.incrementQtyButton, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.decrementQtyButton, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -278,10 +279,10 @@ Partial Class extras
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents itemFlowLayoutPanel As FlowLayoutPanel
     Friend WithEvents Label10 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents itemPanel As Panel
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents selectCheckBox As Guna.UI2.WinForms.Guna2CustomCheckBox
@@ -291,6 +292,6 @@ Partial Class extras
     Friend WithEvents decrementQtyButton As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents QtyLabel As Label
     Friend WithEvents nextButton As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents cancelButton As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents backButton As Guna.UI2.WinForms.Guna2Button
 End Class
