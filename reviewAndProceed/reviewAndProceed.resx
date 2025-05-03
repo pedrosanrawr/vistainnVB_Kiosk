@@ -117,4 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="iTooltip.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAXdJREFUOE+9lMsuxkAYhusUm98SQVg4XAIiTomNQ/4LEmHhBpBYcHEkLCTsLAgW
+        Du/Tzst0pn+teJInM51+8810+rXFf9EfWpiSy3Ip9E0c08pAaC/ks/xMfJOXEhzbE1adkx+SyQ9yX+7J
+        rjyQN9LJ52XPnbLagnQwjwl9oQX3N2WcNNupV3HQiCSIBINyKOoD94gh9p0Bke30TBKwLj3R8OiPVfcb
+        kq5J5pwzkPIqr6tuDXa2JTdCP+VevlTdH2YkKx2WV3WGQwtxH1iAF8XccQYMNcbgbnmVw86bdg/MYa5f
+        YsmKZHC7vMrhsTjHJiipLOGkZPC4vMppS8gxMZdjq/Ek76pudvhtCa9k9lJIcCJZaVWmNcXnlk6itFw2
+        lFwNJ/An58IG2lE5FvosTtuRxCJkhU3QrHQQO03xUVD8juPb9+IZrBInvZVHktLYkdQcZ8k9PrnWZMYB
+        p7Lp98UYvzb4NZmJz2NaUmOLcoKBQHZmf0BRfAFUP1cnLp1vBQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

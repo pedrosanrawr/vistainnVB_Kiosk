@@ -13,7 +13,7 @@ Public Class extras
     Private Sub LoadExtras()
         itemFlowLayoutPanel.Controls.Clear()
 
-        Dim query As String = "SELECT * FROM itemExtras"
+        Dim query As String = "SELECT * FROM itemExtras WHERE ixQuantity > 1"
         Using conn As New SqlConnection(database.connectionString)
             Using cmd As New SqlCommand(query, conn)
                 conn.Open()
@@ -53,7 +53,7 @@ Public Class extras
                         extrasName.TextAlign = ContentAlignment.MiddleCenter
 
                         Dim extrasPrice As New Label()
-                        extrasPrice.Text = "₱" & reader("ixPrice").ToString()
+                        extrasPrice.Text = "₱" & Convert.ToDecimal(reader("ixPrice")).ToString("N2")
                         extrasPrice.Font = New Font("Lato", 24, FontStyle.Regular, GraphicsUnit.Pixel)
                         extrasPrice.Location = New Point(481, 16)
                         extrasPrice.Size = New Size(192, 34)
@@ -202,11 +202,18 @@ Public Class extras
     End Sub
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles backButton.Click
-        basePage.loadForm(selectRoom)
+        basePage.loadForm(New selectRoom())
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
-        basePage.loadForm(New startPage())
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to cancel the booking process?",
+                                                     "Confirm Cancel",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            basePage.loadForm(New startPage())
+        End If
     End Sub
 
     Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
@@ -214,10 +221,10 @@ Public Class extras
 
         If hasZeroQty Then
             MessageBox.Show("Please make sure all selected items have a quantity greater than 0.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return 
+            Return
         End If
 
-        basePage.loadForm(details)
+        basePage.loadForm(New details())
     End Sub
 End Class
 

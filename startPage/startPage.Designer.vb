@@ -24,8 +24,8 @@ Partial Class startPage
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(startPage))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.sidePanel = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.bookNowButton = New Guna.UI2.WinForms.Guna2Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.sidePanel.SuspendLayout()
@@ -40,27 +40,27 @@ Partial Class startPage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Lato", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(96, 705)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(509, 25)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = """YOUR GETAWAY TO RELAXATION AND COMFORT"""
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'sidePanel
         '
         Me.sidePanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
+        Me.sidePanel.Controls.Add(Me.Label1)
         Me.sidePanel.Controls.Add(Me.bookNowButton)
-        Me.sidePanel.Controls.Add(Me.Label4)
         Me.sidePanel.Controls.Add(Me.PictureBox1)
         Me.sidePanel.Location = New System.Drawing.Point(442, 0)
         Me.sidePanel.Name = "sidePanel"
         Me.sidePanel.Size = New System.Drawing.Size(700, 790)
         Me.sidePanel.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Lato", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(96, 697)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(509, 47)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Bookings made at least 14 days before the check-in date require a 50% down paymen" &
+    "t to confirm your reservation."
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'bookNowButton
         '
@@ -74,7 +74,7 @@ Partial Class startPage
         Me.bookNowButton.FillColor = System.Drawing.Color.Black
         Me.bookNowButton.Font = New System.Drawing.Font("Raleway", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.bookNowButton.ForeColor = System.Drawing.Color.White
-        Me.bookNowButton.Location = New System.Drawing.Point(233, 405)
+        Me.bookNowButton.Location = New System.Drawing.Point(233, 355)
         Me.bookNowButton.Name = "bookNowButton"
         Me.bookNowButton.ShadowDecoration.BorderRadius = 5
         Me.bookNowButton.ShadowDecoration.Enabled = True
@@ -96,13 +96,12 @@ Partial Class startPage
         Me.Text = "startPage"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.sidePanel.ResumeLayout(False)
-        Me.sidePanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents sidePanel As Panel
     Friend WithEvents bookNowButton As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label1 As Label
 End Class

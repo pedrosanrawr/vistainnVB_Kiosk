@@ -37,11 +37,11 @@ Partial Class selectRoom
         Me.selectedRoomButton = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.paymentMethodTextBox = New Guna.UI2.WinForms.Guna2TextBox()
         Me.cancelButton = New Guna.UI2.WinForms.Guna2Button()
         Me.nextButton = New Guna.UI2.WinForms.Guna2Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.iToottip = New System.Windows.Forms.PictureBox()
-        Me.paymentMethodComboBox = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.roomNoComboBox = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.roomPriceLabel = New System.Windows.Forms.Label()
         Me.roomNameLabel = New System.Windows.Forms.Label()
@@ -101,6 +101,7 @@ Partial Class selectRoom
         Me.singleButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.singleButton.Size = New System.Drawing.Size(83, 33)
         Me.singleButton.TabIndex = 11
+        Me.singleButton.Tag = "Single"
         Me.singleButton.Text = "1"
         '
         'doubleButton
@@ -122,6 +123,7 @@ Partial Class selectRoom
         Me.doubleButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.doubleButton.Size = New System.Drawing.Size(83, 33)
         Me.doubleButton.TabIndex = 12
+        Me.doubleButton.Tag = "Duo"
         Me.doubleButton.Text = "2"
         '
         'familyButton
@@ -143,6 +145,7 @@ Partial Class selectRoom
         Me.familyButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.familyButton.Size = New System.Drawing.Size(83, 33)
         Me.familyButton.TabIndex = 13
+        Me.familyButton.Tag = "Family"
         Me.familyButton.Text = "3-6"
         '
         'teamButton
@@ -164,15 +167,16 @@ Partial Class selectRoom
         Me.teamButton.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.teamButton.Size = New System.Drawing.Size(83, 33)
         Me.teamButton.TabIndex = 14
+        Me.teamButton.Tag = "Team"
         Me.teamButton.Text = "7-10"
         '
         'selectedRoomFlowLayoutPanel
         '
         Me.selectedRoomFlowLayoutPanel.AutoScroll = True
         Me.selectedRoomFlowLayoutPanel.Controls.Add(Me.Panel1)
-        Me.selectedRoomFlowLayoutPanel.Location = New System.Drawing.Point(99, 220)
+        Me.selectedRoomFlowLayoutPanel.Location = New System.Drawing.Point(88, 220)
         Me.selectedRoomFlowLayoutPanel.Name = "selectedRoomFlowLayoutPanel"
-        Me.selectedRoomFlowLayoutPanel.Size = New System.Drawing.Size(371, 527)
+        Me.selectedRoomFlowLayoutPanel.Size = New System.Drawing.Size(395, 527)
         Me.selectedRoomFlowLayoutPanel.TabIndex = 15
         '
         'Panel1
@@ -245,11 +249,11 @@ Partial Class selectRoom
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(206, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.Panel2.Controls.Add(Me.Label9)
+        Me.Panel2.Controls.Add(Me.paymentMethodTextBox)
         Me.Panel2.Controls.Add(Me.cancelButton)
         Me.Panel2.Controls.Add(Me.nextButton)
         Me.Panel2.Controls.Add(Me.Label10)
         Me.Panel2.Controls.Add(Me.iToottip)
-        Me.Panel2.Controls.Add(Me.paymentMethodComboBox)
         Me.Panel2.Controls.Add(Me.roomNoComboBox)
         Me.Panel2.Controls.Add(Me.roomPriceLabel)
         Me.Panel2.Controls.Add(Me.roomNameLabel)
@@ -268,6 +272,31 @@ Partial Class selectRoom
         Me.Label9.Size = New System.Drawing.Size(92, 19)
         Me.Label9.TabIndex = 60
         Me.Label9.Text = "ROOM NO."
+        '
+        'paymentMethodTextBox
+        '
+        Me.paymentMethodTextBox.BackColor = System.Drawing.Color.Transparent
+        Me.paymentMethodTextBox.BorderRadius = 5
+        Me.paymentMethodTextBox.Cursor = System.Windows.Forms.Cursors.No
+        Me.paymentMethodTextBox.DefaultText = "Cash"
+        Me.paymentMethodTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.paymentMethodTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.paymentMethodTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.paymentMethodTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.paymentMethodTextBox.Enabled = False
+        Me.paymentMethodTextBox.FocusedState.BorderColor = System.Drawing.Color.Transparent
+        Me.paymentMethodTextBox.Font = New System.Drawing.Font("Lato", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.paymentMethodTextBox.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.paymentMethodTextBox.Location = New System.Drawing.Point(40, 705)
+        Me.paymentMethodTextBox.Margin = New System.Windows.Forms.Padding(6)
+        Me.paymentMethodTextBox.Name = "paymentMethodTextBox"
+        Me.paymentMethodTextBox.PlaceholderText = ""
+        Me.paymentMethodTextBox.ReadOnly = True
+        Me.paymentMethodTextBox.SelectedText = ""
+        Me.paymentMethodTextBox.ShadowDecoration.Enabled = True
+        Me.paymentMethodTextBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.paymentMethodTextBox.Size = New System.Drawing.Size(190, 50)
+        Me.paymentMethodTextBox.TabIndex = 31
         '
         'cancelButton
         '
@@ -331,28 +360,6 @@ Partial Class selectRoom
         Me.iToottip.Size = New System.Drawing.Size(20, 20)
         Me.iToottip.TabIndex = 19
         Me.iToottip.TabStop = False
-        '
-        'paymentMethodComboBox
-        '
-        Me.paymentMethodComboBox.BackColor = System.Drawing.Color.Transparent
-        Me.paymentMethodComboBox.BorderColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.paymentMethodComboBox.BorderRadius = 5
-        Me.paymentMethodComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.paymentMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.paymentMethodComboBox.FocusedColor = System.Drawing.Color.Black
-        Me.paymentMethodComboBox.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.paymentMethodComboBox.Font = New System.Drawing.Font("Lato", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.paymentMethodComboBox.ForeColor = System.Drawing.Color.Black
-        Me.paymentMethodComboBox.IntegralHeight = False
-        Me.paymentMethodComboBox.ItemHeight = 44
-        Me.paymentMethodComboBox.Items.AddRange(New Object() {"Full Payment - Cash", "Down Payment (50%) - Cash"})
-        Me.paymentMethodComboBox.Location = New System.Drawing.Point(40, 705)
-        Me.paymentMethodComboBox.Name = "paymentMethodComboBox"
-        Me.paymentMethodComboBox.ShadowDecoration.Enabled = True
-        Me.paymentMethodComboBox.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 0, 4)
-        Me.paymentMethodComboBox.Size = New System.Drawing.Size(190, 50)
-        Me.paymentMethodComboBox.StartIndex = 0
-        Me.paymentMethodComboBox.TabIndex = 59
         '
         'roomNoComboBox
         '
@@ -536,6 +543,7 @@ Partial Class selectRoom
         Me.Controls.Add(Me.doubleButton)
         Me.Controls.Add(Me.singleButton)
         Me.Controls.Add(Me.Label1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "selectRoom"
         Me.Text = "selectRoom"
@@ -585,9 +593,9 @@ Partial Class selectRoom
     Friend WithEvents kitchenLabel As Label
     Friend WithEvents generalLabel As Label
     Friend WithEvents roomNoComboBox As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents paymentMethodComboBox As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents nextButton As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents cancelButton As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents paymentMethodTextBox As Guna.UI2.WinForms.Guna2TextBox
 End Class

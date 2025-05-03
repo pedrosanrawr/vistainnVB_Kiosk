@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
+Imports System.Globalization
 
 Public Class details
     Private WithEvents inCalendar As New MonthCalendar()
@@ -50,21 +51,30 @@ Public Class details
     End Sub
 
     Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
-        basePage.loadForm(New startPage)
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to cancel the booking process?",
+                                                     "Confirm Cancel",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            basePage.loadForm(New startPage())
+        End If
     End Sub
 
     Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
-        basePage.loadForm(extras)
+        basePage.loadForm(New extras)
     End Sub
 
     Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
+        Dim textInfo As TextInfo = CultureInfo.CurrentCulture.TextInfo
+
         If ValidateFields() Then
             Dim checkInDate As Date = Date.Parse(inDatePickerButton.Text)
             Dim checkOutDate As Date = Date.Parse(outDatePickerButton.Text)
 
             If ValidateDateTimeLogic() AndAlso IsBookingConflict(checkInDate, checkOutDate) Then
-                DetailsInformation.FirstName = firstNameTextBox.Text
-                DetailsInformation.LastName = lastNameTextBox.Text
+                DetailsInformation.FirstName = textInfo.ToTitleCase(firstNameTextBox.Text.ToLower())
+                DetailsInformation.LastName = textInfo.ToTitleCase(lastNameTextBox.Text.ToLower())
                 DetailsInformation.Email = emailTextBox.Text
                 DetailsInformation.PhoneNo = phoneNoTextBox.Text
                 DetailsInformation.Pax = Integer.Parse(paxComboBox.Text)
@@ -73,7 +83,7 @@ Public Class details
                 DetailsInformation.InTime = inTimeComboBox.Text
                 DetailsInformation.OutTime = outTimeComboBox.Text
 
-                basePage.loadForm(reviewAndProceed)
+                basePage.loadForm(New reviewAndProceed())
             End If
         End If
     End Sub
@@ -109,9 +119,9 @@ Public Class details
             Return False
         End If
 
-        Dim phoneRegex As New Regex("^[0-9]+$")
+        Dim phoneRegex As New Regex("^(09\d{9}|(\+639\d{9}))$")
         If Not phoneRegex.IsMatch(phoneNoTextBox.Text) Then
-            MessageBox.Show("Phone number must contain only numbers.")
+            MessageBox.Show("Phone number must be a valid Philippine number (e.g. 09XXXXXXXXX or +639XXXXXXXXX).")
             Return False
         End If
 
@@ -132,19 +142,19 @@ Public Class details
 
     Private Function IsBookingConflict(checkIn As Date, checkOut As Date) As Boolean
         Dim query As String = "
-            SELECT COUNT(*) FROM bookings b
-            INNER JOIN payments p ON b.bId = p.bId
-            WHERE b.bRName = @roomName
-            AND b.bRoomNo = @roomNo
-            AND p.pStatus = 'Paid'
-            AND (
-                (@inDate BETWEEN b.bCheckInDate AND b.bCheckOutDate)
-                OR
-                (@outDate BETWEEN b.bCheckInDate AND b.bCheckOutDate)
-                OR
-                (b.bCheckInDate BETWEEN @inDate AND @outDate)
-            )
-        "
+             SELECT COUNT(*) FROM bookings b
+             INNER JOIN payments p ON b.bId = p.bId
+             WHERE b.bRName = @roomName
+             AND b.bRoomNo = @roomNo
+             AND p.pStatus IN ('Paid', 'Pending', 'Partially Paid')  
+             AND (
+                 (@inDate BETWEEN b.bCheckInDate AND b.bCheckOutDate)
+                 OR
+                 (@outDate BETWEEN b.bCheckInDate AND b.bCheckOutDate)
+                 OR
+                 (b.bCheckInDate BETWEEN @inDate AND @outDate)
+             )
+         "
 
         Using conn As New SqlConnection(database.connectionString)
             Using cmd As New SqlCommand(query, conn)
@@ -156,8 +166,7 @@ Public Class details
                 conn.Open()
                 Dim count As Integer = CInt(cmd.ExecuteScalar())
                 If count > 0 Then
-                    MessageBox.Show("The dates you selected for " & SelectedRooms.RoomName & " with a room no. of " & SelectedRooms.RoomNumber & " are already booked. Please choose a different date range.")
-
+                    MessageBox.Show($"The selected room ({SelectedRooms.RoomName} #{SelectedRooms.RoomNumber}) is already booked for that date range. Please pick another date.")
                     Return False
                 End If
             End Using
@@ -171,14 +180,14 @@ Public Class details
 
         Dim maxPax As Integer = 1
 
-        Select Case SelectedRooms.RoomCategory.ToLower()
-            Case "single"
+        Select Case SelectedRooms.RoomCategory
+            Case "Single"
                 maxPax = 1
-            Case "duo"
+            Case "Duo"
                 maxPax = 2
-            Case "family"
+            Case "Family"
                 maxPax = 6
-            Case "team"
+            Case "Team"
                 maxPax = 10
         End Select
 
@@ -186,7 +195,7 @@ Public Class details
             paxComboBox.Items.Add(i.ToString())
         Next
 
-        paxComboBox.SelectedIndex = 0
+        paxComboBox.SelectedIndex = -1
     End Sub
 End Class
 

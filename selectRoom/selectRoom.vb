@@ -273,11 +273,11 @@ Public Class selectRoom
 
         SelectedRooms.RoomName = selectedRoomName_
         SelectedRooms.RoomNumber = roomNoComboBox.SelectedItem.ToString()
-        SelectedRooms.PaymentOption = paymentMethodComboBox.Text
+        SelectedRooms.PaymentOption = paymentMethodTextBox.Text
         SelectedRooms.RoomPrice = roomPriceLabel.Text
         SelectedRooms.RoomCategory = selectedCategory
 
-        basePage.loadForm(extras)
+        basePage.loadForm(New extras())
     End Sub
 
     Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
