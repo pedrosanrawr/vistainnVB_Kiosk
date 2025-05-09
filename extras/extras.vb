@@ -115,27 +115,6 @@ Public Class extras
         Dim qtyLabel As Label = itemPanel.Controls.OfType(Of Label)().FirstOrDefault(Function(l) l.Name = "qtyLabel")
 
         If cb.Checked Then
-            If selectedCheckboxes.Count >= 4 Then
-                Dim cbToRemove = selectedCheckboxes(0)
-                Dim panelToRemove = CType(cbToRemove.Tag, Panel)
-                Dim qtyLabelToReset As Label = panelToRemove.Controls.OfType(Of Label)().FirstOrDefault(Function(l) l.Name = "qtyLabel")
-                Dim nameLabelToRemove As Label = panelToRemove.Controls.OfType(Of Label)().FirstOrDefault(Function(l) l.Location = New Point(229, 16))
-
-                If qtyLabelToReset IsNot Nothing Then
-                    qtyLabelToReset.Text = "0"
-                End If
-
-                isProgrammaticChange = True
-                cbToRemove.Checked = False
-                isProgrammaticChange = False
-
-                selectedCheckboxes.RemoveAt(0)
-
-                If nameLabelToRemove IsNot Nothing Then
-                    SelectedExtras.ItemsSelected.RemoveAll(Function(x) x.ItemName = nameLabelToRemove.Text)
-                End If
-            End If
-
             selectedCheckboxes.Add(cb)
 
             Dim item As New ExtraItem With {
@@ -164,14 +143,12 @@ Public Class extras
 
         If checkbox IsNot Nothing AndAlso checkbox.Checked Then
             Dim currentQty As Integer = Integer.Parse(qtyLabel.Text)
-            If currentQty < 2 Then
-                qtyLabel.Text = (currentQty + 1).ToString()
+            qtyLabel.Text = (currentQty + 1).ToString()
 
-                Dim nameLabel As Label = itemPanel.Controls.OfType(Of Label)().FirstOrDefault(Function(l) l.Location = New Point(229, 16))
-                Dim selected = SelectedExtras.ItemsSelected.FirstOrDefault(Function(x) x.ItemName = nameLabel.Text)
-                If selected IsNot Nothing Then
-                    selected.ItemQuantity = currentQty + 1
-                End If
+            Dim nameLabel As Label = itemPanel.Controls.OfType(Of Label)().FirstOrDefault(Function(l) l.Location = New Point(229, 16))
+            Dim selected = SelectedExtras.ItemsSelected.FirstOrDefault(Function(x) x.ItemName = nameLabel.Text)
+            If selected IsNot Nothing Then
+                selected.ItemQuantity = currentQty + 1
             End If
         Else
             MessageBox.Show("Please select the item first before adjusting quantity.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)

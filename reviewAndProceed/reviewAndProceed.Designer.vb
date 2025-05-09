@@ -54,6 +54,7 @@ Partial Class reviewAndProceed
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.downPaymentLabel = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.extrasTooltip = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.iTooltip, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -342,6 +343,7 @@ Partial Class reviewAndProceed
         '
         'downPaymentLabel
         '
+        Me.downPaymentLabel.AutoEllipsis = True
         Me.downPaymentLabel.Font = New System.Drawing.Font("Lato", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.downPaymentLabel.Location = New System.Drawing.Point(878, 483)
         Me.downPaymentLabel.Name = "downPaymentLabel"
@@ -431,4 +433,5 @@ Partial Class reviewAndProceed
     Friend WithEvents ToolTip As ToolTip
     Friend WithEvents downPaymentLabel As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents extrasTooltip As ToolTip
 End Class

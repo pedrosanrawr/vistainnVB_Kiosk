@@ -128,18 +128,22 @@ Public Class reviewAndProceed
         checkInLabel.Text = $"{DetailsInformation.CheckInDate:MMMM dd, yyyy} {DetailsInformation.InTime}"
         checkOutLabel.Text = $"{DetailsInformation.CheckOutDate:MMMM dd, yyyy} {DetailsInformation.OutTime}"
         paxLabel.Text = DetailsInformation.Pax.ToString()
-
         roomLabel.Text = SelectedRooms.RoomName
         roomNoLabel.Text = SelectedRooms.RoomNumber
         paymentOptionLabel.Text = SelectedRooms.PaymentOption
 
-        extrasLabel.Text = ""
-        Dim extrasTotal As Decimal = 0D
-        For Each item In SelectedExtras.ItemsSelected
-            extrasLabel.Text &= $"{item.ItemName} - {item.ItemQuantity}" & Environment.NewLine
-            extrasTotal += item.ItemPrice * item.ItemQuantity
-        Next
+        Dim extrasList As List(Of String) = SelectedExtras.ItemsSelected.
+        Select(Function(i) $"{i.ItemName} - {i.ItemQuantity}").ToList()
+        Dim fullExtras As String = String.Join(Environment.NewLine, extrasList)
 
+        Dim displayExtras As String = If(extrasList.Count <= 3,
+        fullExtras,
+        String.Join(Environment.NewLine, extrasList.Take(3)) & Environment.NewLine & "... (hover for full details)")
+
+        extrasLabel.Text = displayExtras
+        extrasTooltip.SetToolTip(extrasLabel, fullExtras)
+
+        Dim extrasTotal As Decimal = SelectedExtras.ItemsSelected.Sum(Function(i) i.ItemPrice * i.ItemQuantity)
         Dim hourlyRate As Decimal = 300D
         Dim baseRoomPrice As Decimal = SelectedRooms.RoomPrice
         Dim vatRate As Decimal = 0.08D
@@ -148,33 +152,22 @@ Public Class reviewAndProceed
         Dim totalBeforeDiscount As Decimal = subtotal + vatAmount
 
         Dim daysAhead As Integer = (DetailsInformation.CheckInDate - Date.Now.Date).Days
-        Dim downpayment As Decimal = 0D
-        If daysAhead >= 14 Then
-            downpayment = totalBeforeDiscount * 0.5D
-        End If
+        Dim downpayment As Decimal = If(daysAhead >= 14, totalBeforeDiscount * 0.5D, 0D)
 
-        downPaymentLabel.Text = "₱" & downpayment.ToString("N2")
-        totalPriceLabel.Text = "₱" & totalBeforeDiscount.ToString("N2")
+        downPaymentLabel.Text = $"₱{downpayment:N2}"
+        totalPriceLabel.Text = $"₱{totalBeforeDiscount:N2}"
 
-        Dim tooltipText As String = ""
-        If daysAhead >= 14 Then
-            tooltipText = $"Room Price: ₱{baseRoomPrice:N2}" & Environment.NewLine &
-                  $"Hourly Rate: ₱{hourlyRate:N2}" & Environment.NewLine &
-                  $"Extras Total: ₱{extrasTotal:N2}" & Environment.NewLine &
-                  $"Subtotal: ₱{subtotal:N2}" & Environment.NewLine &
-                  $"VAT (8%): ₱{vatAmount:N2}" & Environment.NewLine &
-                  $"Total: ₱{totalBeforeDiscount:N2}" & Environment.NewLine &
-                  $"➤ 50% Downpayment: ₱{downpayment:N2}"
-        Else
-            tooltipText = $"Room Price: ₱{baseRoomPrice:N2}" & Environment.NewLine &
-                  $"Hourly Rate: ₱{hourlyRate:N2}" & Environment.NewLine &
-                  $"Extras Total: ₱{extrasTotal:N2}" & Environment.NewLine &
-                  $"Subtotal: ₱{subtotal:N2}" & Environment.NewLine &
-                  $"VAT (8%): ₱{vatAmount:N2}" & Environment.NewLine &
-                  $"➤ Total Price: ₱{totalBeforeDiscount:N2}"
-        End If
+        Dim tooltipText As String = $"Room Price: ₱{baseRoomPrice:N2}" & Environment.NewLine &
+                                $"Hourly Rate: ₱{hourlyRate:N2}" & Environment.NewLine &
+                                $"Extras Total: ₱{extrasTotal:N2}" & Environment.NewLine &
+                                $"Subtotal: ₱{subtotal:N2}" & Environment.NewLine &
+                                $"VAT (8%): ₱{vatAmount:N2}" & Environment.NewLine &
+                                If(daysAhead >= 14,
+                                    $"Total: ₱{totalBeforeDiscount:N2}" & Environment.NewLine &
+                                    $"➤ 50% Downpayment: ₱{downpayment:N2}",
+                                    $"➤ Total Price: ₱{totalBeforeDiscount:N2}")
 
-        ToolTip.SetToolTip(iTooltip, tooltipText)
+        extrasTooltip.SetToolTip(iTooltip, tooltipText)
     End Sub
 
     Private Function GenerateReferenceNo() As String
